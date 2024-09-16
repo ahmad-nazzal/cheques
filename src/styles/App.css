@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+body {
+  background-color: #191f2b !important;
+}
+
+p {
+  color: #aaa;
+}
+
+.sperator {
+  height: 1px;
+  width: 100%;
+  background-color: #c5bcbc1f;
+  margin-bottom: 24px;
+}
+
+.section {
+  border-radius: 12px;
+  background-color: #2b303d;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+#form > input {
+  color: black;
+  margin-bottom: 20px !important;
+}
+select,
+option {
+  color: black;
+}
+input,
+select {
+  border-radius: 6px;
+}
