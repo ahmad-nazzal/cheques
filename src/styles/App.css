@@ -11,6 +11,8 @@ body {
 
 p {
   color: #aaa;
+  direction: rtl;
+  text-align: left;
 }
 
 .sperator {
@@ -27,11 +29,14 @@ p {
 }
 
 #form > input {
-  color: black;
   margin-bottom: 20px !important;
 }
+#image-container > p {
+  position: absolute;
+}
 select,
-option {
+option,
+input {
   color: black;
 }
 input,
