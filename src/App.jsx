@@ -49,6 +49,7 @@ function App() {
 
   useEffect(() => {
     const imageContainer = document.getElementById("image-container");
+
     function addDragFunctionality() {
       const tasteer = document.getElementById("tasteer");
       if (tasteer) {
@@ -64,26 +65,35 @@ function App() {
           offsetX = event.clientX - tasteer.offsetLeft;
           offsetY = event.clientY - tasteer.offsetTop;
           event.preventDefault();
+          tasteer.style.cursor = 'grabbing';
+
         });
 
         document.addEventListener("mousemove", function (event) {
           if (isDragging) {
+            console.log(offsetX);
+            
             const tasteerRect = tasteer.getBoundingClientRect();
-            const newX = event.clientX - offsetX;
-            const newY = event.clientY - offsetY;
-            console.log(Math.floor(containerRect.right));
-            console.log(Math.floor(tasteerRect.right));
+            let newX = event.clientX - offsetX;
+            let newY = event.clientY - offsetY;
+            console.log("newX", Math.floor(newX));
+            console.log("width", Math.floor(containerRect.right));
+            console.log("right", Math.floor(tasteerRect.right));
 
-            if (newX >= 0 && newX + tasteerRect.width <= containerRect.width) {
-              tasteer.style.left = newX + "px";
-            }
 
-            if (
-              newY >= 0 &&
-              newY + tasteerRect.height <= containerRect.height
-            ) {
-              tasteer.style.top = newY + "px";
+            if (newX < 0) newX = 0;
+            if (newX+tasteerRect.width > containerRect.width)
+            {
+              newX = containerRect.width - tasteerRect.width;
             }
+            tasteer.style.left = newX + "px";
+
+            if (newY < 0) newY = 0;
+            if (newY + tasteerRect.height > containerRect.height)
+              newY = containerRect.height - tasteerRect.height;
+            
+            tasteer.style.top = newY + "px";
+            
             // if (
             //   Math.floor(tasteerRect.right) - 1 <=
             //   Math.floor(containerRect.right)
@@ -96,6 +106,7 @@ function App() {
         });
 
         document.addEventListener("mouseup", function () {
+          tasteer.style.cursor = 'move';
           isDragging = false;
         });
       }
@@ -248,6 +259,7 @@ function App() {
                     style={{
                       fontSize: "12px",
                       transform: "rotate(-45deg)",
+                      transformOrigin: "bottom right",
                       top: "45px",
                       left: "20px",
                       textWrap: "nowrap",
