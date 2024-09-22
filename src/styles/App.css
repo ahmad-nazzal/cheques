@@ -44,3 +44,28 @@ input,
 select {
   border-radius: 6px;
 }
+.btn-primary{
+  width: 80%;
+  padding: 4px 12px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 0;
+}
+
+@media print {
+  img{
+    visibility: hidden;
+  }
+  #image-container {
+    visibility: visible;
+    position: absolute;
+    top:500px;
+    left: 250px;
+    rotate: -90deg;
+  
+  }
+  #image-container p {
+    color: black;
+  }
+   
+}

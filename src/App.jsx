@@ -1,4 +1,4 @@
-import { createElement, useState } from "react";
+import { createElement, useState, useRef } from "react";
 import { useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -10,6 +10,7 @@ import arabicImage from "./assets/arabic.jpg";
 import palestineImage from "./assets/palestine.jpg";
 import ammanImage from "./assets/amman.jpg";
 import Draggable from "react-draggable";
+import { useReactToPrint } from "react-to-print";
 
 function App() {
   const [bankImage, setBankImage] = useState(palestineImage);
@@ -18,6 +19,8 @@ function App() {
   const [chequePrice, setChequePrice] = useState("");
   const [chequeCurrency, setChequeCurrency] = useState("ils");
   const [chequeTasteer, setChequeTasteer] = useState("");
+  const chequeRef = useRef();
+
   const currecnyToArabic = {
     jod: "ديناراً أردنياً لاغير",
     ils: "شيقل لاغير",
@@ -46,7 +49,9 @@ function App() {
   const handleTasteerChange = (event) => {
     setChequeTasteer(event.target.value);
   };
-
+  const handlePrint = useReactToPrint({
+    content: () => chequeRef.current,
+  });
   useEffect(() => {
     const imageContainer = document.getElementById("image-container");
 
@@ -73,9 +78,6 @@ function App() {
             const tasteerRect = tasteer.getBoundingClientRect();
             let newX = event.clientX - offsetX;
             let newY = event.clientY - offsetY;
-            console.log("tasteer",  tasteer.offsetLeft);
-            console.log("imageContainer", imageContainer.offsetLeft);
-            console.log("to end", tasteer.offsetLeft - imageContainer.offsetLeft);
             
             if (newX < 0) newX = 0;
             if (newX+tasteerRect.width > containerRect.width)
@@ -189,13 +191,14 @@ function App() {
               <div
                 id="image-container"
                 className="position-relative d-inline-block"
+                ref={chequeRef}
               >
                 <img id="image" src={bankImage} alt="bank image" />
                 {chequeDate && (
                   <Draggable bounds="parent">
                     <p
                       style={{
-                        bottom: "55px",
+                        bottom: "65px",
                         right: "210px",
                       }}
                     >
@@ -245,7 +248,7 @@ function App() {
                   <p
                     id="tasteer"
                     style={{
-                      fontSize: "12px",
+                      fontSize: "14px",
                       width:"96px",
                       display:"flex",
                       justifyContent:"center",
@@ -255,12 +258,14 @@ function App() {
                       top: "0px",
                       left: "0px",
                       textWrap: "nowrap",
+                      
                     }}
                   >
                     {chequeTasteer}
                   </p>
                 )}
               </div>
+              <button className="btn-primary" onClick={handlePrint}>إطبع الشيك</button>
             </div>
           </div>
         </div>
