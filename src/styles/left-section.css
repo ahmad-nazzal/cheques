@@ -9,4 +9,5 @@ img {
 .left-side p {
   cursor: move;
   color: black;
+  margin: 0;
 }

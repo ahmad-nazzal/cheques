@@ -57,8 +57,6 @@ function App() {
         let offsetX, offsetY;
 
         const containerRect = imageContainer.getBoundingClientRect();
-        console.log(containerRect.right);
-        console.log(containerRect.top);
 
         tasteer.addEventListener("mousedown", function (event) {
           isDragging = true;
@@ -71,16 +69,14 @@ function App() {
 
         document.addEventListener("mousemove", function (event) {
           if (isDragging) {
-            console.log(offsetX);
             
             const tasteerRect = tasteer.getBoundingClientRect();
             let newX = event.clientX - offsetX;
             let newY = event.clientY - offsetY;
-            console.log("newX", Math.floor(newX));
-            console.log("width", Math.floor(containerRect.right));
-            console.log("right", Math.floor(tasteerRect.right));
-
-
+            console.log("tasteer",  tasteer.offsetLeft);
+            console.log("imageContainer", imageContainer.offsetLeft);
+            console.log("to end", tasteer.offsetLeft - imageContainer.offsetLeft);
+            
             if (newX < 0) newX = 0;
             if (newX+tasteerRect.width > containerRect.width)
             {
@@ -93,15 +89,7 @@ function App() {
               newY = containerRect.height - tasteerRect.height;
             
             tasteer.style.top = newY + "px";
-            
-            // if (
-            //   Math.floor(tasteerRect.right) - 1 <=
-            //   Math.floor(containerRect.right)
-            // ) {
-            //   console.log("lqlq");
-            //   tasteer.style.left = newX + "px";
-            // }
-            // if (newY > -40 && newY < 500) tasteer.style.top = newY + "px";
+
           }
         });
 
@@ -258,10 +246,14 @@ function App() {
                     id="tasteer"
                     style={{
                       fontSize: "12px",
+                      width:"96px",
+                      display:"flex",
+                      justifyContent:"center",
+                      alignItems:"flex-end",
+                      height:"64px",
                       transform: "rotate(-45deg)",
-                      transformOrigin: "bottom right",
-                      top: "45px",
-                      left: "20px",
+                      top: "0px",
+                      left: "0px",
                       textWrap: "nowrap",
                     }}
                   >
