@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   color: white;
-  font-family: 'Tajwal';
+  font-family: "Tajwal";
 }
 
 body {
@@ -44,7 +44,7 @@ input,
 select {
   border-radius: 6px;
 }
-.btn-primary{
+.btn-primary {
   width: 80%;
   padding: 4px 12px;
   border-radius: 8px;
@@ -53,19 +53,23 @@ select {
 }
 
 @media print {
-  img{
-    visibility: hidden;
+  img {
+    /* visibility: hidden; */
+    /* width: 16cm;
+    height: 7cm; */
   }
   #image-container {
-    visibility: visible;
-    position: absolute;
-    top:500px;
-    left: 250px;
-    rotate: -90deg;
-  
+    transform: translateY(60%) rotate(-90deg);
+    transform-origin: center;
+  }
+  #print {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
   }
   #image-container p {
     color: black;
   }
-   
 }

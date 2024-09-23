@@ -68,20 +68,17 @@ function App() {
           offsetX = event.clientX - tasteer.offsetLeft;
           offsetY = event.clientY - tasteer.offsetTop;
           event.preventDefault();
-          tasteer.style.cursor = 'grabbing';
-
+          tasteer.style.cursor = "grabbing";
         });
 
         document.addEventListener("mousemove", function (event) {
           if (isDragging) {
-            
             const tasteerRect = tasteer.getBoundingClientRect();
             let newX = event.clientX - offsetX;
             let newY = event.clientY - offsetY;
-            
+
             if (newX < 0) newX = 0;
-            if (newX+tasteerRect.width > containerRect.width)
-            {
+            if (newX + tasteerRect.width > containerRect.width) {
               newX = containerRect.width - tasteerRect.width;
             }
             tasteer.style.left = newX + "px";
@@ -89,14 +86,13 @@ function App() {
             if (newY < 0) newY = 0;
             if (newY + tasteerRect.height > containerRect.height)
               newY = containerRect.height - tasteerRect.height;
-            
-            tasteer.style.top = newY + "px";
 
+            tasteer.style.top = newY + "px";
           }
         });
 
         document.addEventListener("mouseup", function () {
-          tasteer.style.cursor = 'move';
+          tasteer.style.cursor = "move";
           isDragging = false;
         });
       }
@@ -188,84 +184,86 @@ function App() {
                 </div>
               </div>
               <div className="sperator mt-2"></div>
-              <div
-                id="image-container"
-                className="position-relative d-inline-block"
-                ref={chequeRef}
-              >
-                <img id="image" src={bankImage} alt="bank image" />
-                {chequeDate && (
-                  <Draggable bounds="parent">
-                    <p
-                      style={{
-                        bottom: "65px",
-                        right: "210px",
-                      }}
-                    >
-                      {chequeDate}
-                    </p>
-                  </Draggable>
-                )}
-                {chequeName && (
-                  <Draggable bounds="parent">
-                    <p
-                      style={{
-                        top: "100px",
-                        right: "240px",
-                      }}
-                    >
-                      {chequeName}
-                    </p>
-                  </Draggable>
-                )}
-                {chequePrice && (
-                  <>
+              <div id="print" ref={chequeRef}>
+                <div
+                  id="image-container"
+                  className="position-relative d-inline-block"
+                >
+                  <img id="image" src={bankImage} alt="bank image" />
+                  {chequeDate && (
                     <Draggable bounds="parent">
                       <p
                         style={{
-                          top: "140px",
+                          bottom: "65px",
+                          right: "210px",
+                        }}
+                      >
+                        {chequeDate}
+                      </p>
+                    </Draggable>
+                  )}
+                  {chequeName && (
+                    <Draggable bounds="parent">
+                      <p
+                        style={{
+                          top: "100px",
                           right: "240px",
-                          fontSize: "12px",
                         }}
                       >
-                        {tafqeet(chequePrice)}{" "}
-                        {currecnyToArabic[chequeCurrency]}
+                        {chequeName}
                       </p>
                     </Draggable>
-                    <Draggable bounds="parent">
-                      <p
-                        style={{
-                          top: "130px",
-                          right: "50px",
-                        }}
-                      >
-                        {"#" + chequePrice + "#"}
-                      </p>
-                    </Draggable>
-                  </>
-                )}
-                {chequeTasteer && (
-                  <p
-                    id="tasteer"
-                    style={{
-                      fontSize: "14px",
-                      width:"96px",
-                      display:"flex",
-                      justifyContent:"center",
-                      alignItems:"flex-end",
-                      height:"64px",
-                      transform: "rotate(-45deg)",
-                      top: "0px",
-                      left: "0px",
-                      textWrap: "nowrap",
-                      
-                    }}
-                  >
-                    {chequeTasteer}
-                  </p>
-                )}
+                  )}
+                  {chequePrice && (
+                    <>
+                      <Draggable bounds="parent">
+                        <p
+                          style={{
+                            top: "140px",
+                            right: "240px",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {tafqeet(chequePrice)}{" "}
+                          {currecnyToArabic[chequeCurrency]}
+                        </p>
+                      </Draggable>
+                      <Draggable bounds="parent">
+                        <p
+                          style={{
+                            top: "130px",
+                            right: "50px",
+                          }}
+                        >
+                          {"#" + chequePrice + "#"}
+                        </p>
+                      </Draggable>
+                    </>
+                  )}
+                  {chequeTasteer && (
+                    <p
+                      id="tasteer"
+                      style={{
+                        fontSize: "14px",
+                        width: "96px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "flex-end",
+                        height: "64px",
+                        transform: "rotate(-45deg)",
+                        top: "0px",
+                        left: "0px",
+                        textWrap: "nowrap",
+                      }}
+                    >
+                      {chequeTasteer}
+                    </p>
+                  )}
+                </div>
               </div>
-              <button className="btn-primary" onClick={handlePrint}>إطبع الشيك</button>
+              <button className="btn-primary" onClick={handlePrint}>
+                إطبع الشيك
+              </button>
             </div>
           </div>
         </div>
