@@ -11,7 +11,7 @@ import palestineImage from "./assets/palestine.jpg";
 import ammanImage from "./assets/amman.jpg";
 import Draggable from "react-draggable";
 import { useReactToPrint } from "react-to-print";
-
+import { tafqeet } from "./Tafqeet";
 function App() {
   const [bankImage, setBankImage] = useState(palestineImage);
   const [chequeDate, setChequeDate] = useState("");
