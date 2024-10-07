@@ -39,7 +39,7 @@ To run this project, you'll need the following:
 ## Deploying
 
 I have already deployed the project. You can access the live version at:  
-<a href="https://cheques-a7www4pre-ahmad-nazzals-projects.vercel.app/" target="_blank">Online Cheque Print</a>
+<a href="https://cheques-umber.vercel.app/" target="_blank">Online Cheque Print</a>
 ## Get in Touch with Me
 
 <a href="https://ahmad-nazzal-portfolio.netlify.app/" target="_blank"> <img src="https://skillicons.dev/icons?i=js,html,css,react" alt="My Skills" /> </a>
