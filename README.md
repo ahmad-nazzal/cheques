@@ -46,4 +46,4 @@ I have already deployed the project. You can access the live version at:
 
 ### Contact Me
 
-<a href="https://www.linkedin.com/in/ahmad-nazzal-b21143265/" target="_blank"> <img src="https://skillicons.dev/icons?i=linkedin" alt="My LinkedIn account" /> </a>
+<a href="https://www.linkedin.com/in/ahmad-nazzal-b21143265/" target=""> <img src="https://skillicons.dev/icons?i=linkedin" alt="My LinkedIn account" /> </a>
